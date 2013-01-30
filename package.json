@@ -4,8 +4,6 @@
   "description": "A Postgres Session Store that uses brianc's Postgres Driver's
  	 built in Client Pooling and Express.",
   "main": "pg-session.js",
-  "scripts": {
-  },
   "repository": "",
   "keywords": [
     "node",
