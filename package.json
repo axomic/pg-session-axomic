@@ -2,7 +2,7 @@
   "name": "pg-session-axomic",
   "version": "0.0.1",
   "description": "A Postgres Session Store that uses brianc's Postgres Driver's built in Client Pooling and Express.",
-  "main": "pg-session.js",
+  "main": "pg-session-axomic.js",
   "repository": "",
   "keywords": [
     "node",
