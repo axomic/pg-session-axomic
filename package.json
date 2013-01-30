@@ -1,8 +1,7 @@
 {
   "name": "pg-session",
   "version": "0.0.1",
-  "description": "A Postgres Session Store that uses brianc's Postgres Driver's
- 	 built in Client Pooling and Express.",
+  "description": "A Postgres Session Store that uses brianc's Postgres Driver's built in Client Pooling and Express.",
   "main": "pg-session.js",
   "repository": "",
   "keywords": [
