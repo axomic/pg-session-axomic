@@ -1,4 +1,4 @@
-var 	orm					= require('node-orm2'),
+var 	orm					= require('node-orm2-axomic'),
 		winscontrol	     	= require('../../lib/winsControl'),
 		winston 			= winscontrol.Win(),
 		globalConfig        = require('../../globalConfig');
