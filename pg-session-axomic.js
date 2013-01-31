@@ -41,8 +41,6 @@ module.exports = function (connect)
 					if(err) {
 					winston.error(err);
 					}
-                    winston.info('Destroying ' + sessions.length 
-								+ ' expired sessions.');
 				})
 					})
             }, checkExpirationInterval);
