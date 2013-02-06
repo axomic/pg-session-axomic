@@ -25,6 +25,7 @@ new pgSessionStore({globals:globalConfig}
 ```
 
 
+
 Currently the following *key:values* are supported:  
 
 * `databaseConnectionPostgres`, so for example you can specify it in your *globalConfig.js*:
@@ -37,6 +38,7 @@ var globalConfig = {
 
 module.exports = globalConfig;
 ```
+*Note:* ** `databaseConnectionPostgres` is required for this module to work correctly.**
 
 
 
