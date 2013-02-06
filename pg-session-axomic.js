@@ -1,8 +1,4 @@
-var     orm                 = require('node-orm2-axomic'),
-        winscontrol         = require('../../lib/winsControl'),
-        winston             = winscontrol.Win();
-
-
+var     orm  = require('node-orm2-axomic');
 
 module.exports = function (connect)
 {
@@ -39,7 +35,7 @@ module.exports = function (connect)
                 Session.find({expires: orm.lt(Math.round(Date.now() / 1000))})
                 .remove(function (err) {
                     if(err) {
-                    winston.error(err);
+                    // console.log(err);
                     }
                 });
                     });
@@ -48,7 +44,7 @@ module.exports = function (connect)
 
         this.get = function (sid, fn)
         {
-            winston.info("getting session");
+            // // console.log("getting session");
             orm.connect(globalConfig.databaseConnectionPostgres,
             function(err, db){
                 var Session = db.define("session", {
@@ -73,7 +69,7 @@ module.exports = function (connect)
 
         this.set = function (sid, session, fn)
         {
-            winston.info("setting session");
+            // console.log("setting session");
             orm.connect(globalConfig.databaseConnectionPostgres,
             function(err, db){
                 var Session = db.define("session", {
@@ -97,8 +93,8 @@ module.exports = function (connect)
 
                         record.save(function(err) {
                             if(err) {
-                               winston.info("error is");
-                               winston.info(err);
+                               // console.log("error is");
+                               // console.log(err);
                             }
                         });
                     }
@@ -107,7 +103,7 @@ module.exports = function (connect)
                         recordArray[0].expires = expirytime;
                         recordArray[0].save(function(err) {
                             if(err) {
-                                   winston.error(err);
+                                   // console.log(err);
                                 }
                         });
 
@@ -128,7 +124,7 @@ module.exports = function (connect)
                 });
 
                 Session.find({sid: sid}).remove(function (err) {
-                    winston.error(err);
+                    // console.log(err);
                     fn && fn();
                 });
 
@@ -154,7 +150,7 @@ module.exports = function (connect)
         };
         this.clear = function (callback)
         {
-            winston.info("Clear ALL SESSIONS!");
+            // console.log("Clear ALL SESSIONS!");
         };
 
     }
