@@ -1,4 +1,9 @@
-var     orm  = require('node-orm2-axomic');
+var     orm  			= require('node-orm2-axomic'),
+		sessionModel 	= {
+                            sid:     String,
+                            expires: Number,
+                            json:    String
+                        };
 
 module.exports = function (connect)
 {
@@ -25,11 +30,8 @@ module.exports = function (connect)
         {
             orm.connect(globalConfig.databaseConnectionPostgres,
                     function(err, db){
-                        var Session = db.define("session", {
-                            sid:     String,
-                            expires: Number,
-                            json:    String
-                        });
+                        var Session = db.define("session", sessionModel,
+												{cache: false} );
 
 
                 Session.find({expires: orm.lt(Math.round(Date.now() / 1000))})
@@ -47,11 +49,10 @@ module.exports = function (connect)
             // // console.log("getting session");
             orm.connect(globalConfig.databaseConnectionPostgres,
             function(err, db){
-                var Session = db.define("session", {
-                            sid:     String,
-                            expires: Number,
-                            json:    String
-                });
+
+                var Session = db.define("session", sessionModel,
+												{cache: false} );
+
                 Session.find({sid: sid}, function (err, record)
                 {
                     if(record.length > 0) {
@@ -72,12 +73,8 @@ module.exports = function (connect)
             // console.log("setting session");
             orm.connect(globalConfig.databaseConnectionPostgres,
             function(err, db){
-                var Session = db.define("session", {
-                            sid:     String,
-                            expires: Number,
-                            json:    String
-                });
-
+                var Session = db.define("session", sessionModel,
+												{cache: false} );
                 Session.find({sid: sid}, function (err, recordArray)
                 {
                     var record;
@@ -117,11 +114,8 @@ module.exports = function (connect)
         {
                 orm.connect(globalConfig.databaseConnectionPostgres,
             function(err, db){
-                var Session = db.define("session", {
-                            sid:     String,
-                            expires: Number,
-                            json:    String
-                });
+                var Session = db.define("session", sessionModel,
+												{cache: false} );
 
                 Session.find({sid: sid}).remove(function (err) {
                     // console.log(err);
@@ -136,11 +130,8 @@ module.exports = function (connect)
         {
            orm.connect(globalConfig.databaseConnectionPostgres,
             function(err, db){
-                var Session = db.define("session", {
-                            sid:     String,
-                            expires: Number,
-                            json:    String
-                });
+                var Session = db.define("session", sessionModel,
+												{cache: false} );
 
 
           Session.count({}, function (err, count){
