@@ -1,4 +1,4 @@
-var     orm  			= require('node-orm2-axomic'),
+var     orm  			= require('orm'),
 		sessionModel 	= {
                             sid:     String,
                             expires: Number,
